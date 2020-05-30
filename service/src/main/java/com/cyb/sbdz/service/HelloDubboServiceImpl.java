@@ -4,7 +4,7 @@ import com.alibaba.dubbo.config.annotation.Service;
 import java.util.Date;
 
 @org.springframework.stereotype.Service("helloDubboService")
-@Service(version = "1.0.0", interfaceClass = HelloDubboServic.class)
+@Service(version = "1.0.0")
 public class HelloDubboServiceImpl implements HelloDubboServic {
 
     @Override
