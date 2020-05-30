@@ -1,0 +1,12 @@
+debug: true
+
+server:
+  port: 9090
+
+dubbo:
+  application:
+    name: consumer
+  registry:
+    # zookeeper 注册中心地址
+    address: zookeeper://192.168.124.17:2181
+    timeout: 5000
