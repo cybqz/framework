@@ -1,0 +1,41 @@
+USER: dog
+PASSWORD: 123456
+
+server:
+  port: 7001
+  servlet:
+    context-path: /eurekaserver
+
+eureka:
+  environment: dev
+  datacenter: local
+  instance:
+    appname: EurekaServer # 服务名，默认取 spring.application.name 配置值，如果没有则为 unknown
+    instance-id: eureka-instance-srv #实例ID
+    hostname: localhost # 应用实例主机名
+    prefer-ip-address: false # 客户端在注册时使用自己的IP而不是主机名，缺省：false
+    ip-address: 127.0.0.1 # 应用实例IP
+    lease-expiration-duration-in-seconds: 90 # 服务失效时间，失效的服务将被剔除。单位：秒，默认：90
+    lease-renewal-interval-in-seconds: 30 # 服务续约（心跳）频率，单位：秒，缺省30
+    status-page-url-path: /info # 状态页面的URL，相对路径，默认使用 HTTP 访问，如需使用 HTTPS则要使用绝对路径配置，缺省：/info
+    health-check-url-path: /health # 健康检查页面的URL，相对路径，默认使用 HTTP 访问，如需使用 HTTPS则要使用绝对路径配置，缺省：/health
+
+  client: #服务端默认也是一个客户端
+    register-with-eureka: false #是否向服务注册中心注册自己
+    fetch-registry: false # 要不要去注册中心获取其他服务的地址
+    service-url:
+      defaultZone: http://${USER}:${PASSWORD}@${eureka.instance.hostname}:${server.port}${server.servlet.context-path}/
+
+  server:
+    enable-self-preservation: false # 是否允许开启自我保护模式，缺省：true,当Eureka服务器在短时间内丢失过多客户端时，自我保护模式可使服务端不再删除失去连接的客户端
+    peer-eureka-nodes-update-interval-ms: 5000 # Peer节点更新间隔，单位：毫秒
+    eviction-interval-timer-in-ms: 60000 # Eureka服务器清理无效节点的时间间隔，单位：毫秒，缺省：60000，即60秒
+
+spring:
+  application:
+    name: EurekaServer
+  security:
+    user:
+      roles: SUPERUSER
+      name: ${USER}
+      password: ${PASSWORD}

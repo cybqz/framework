@@ -1,0 +1,14 @@
+server:
+  port: 8088
+
+spring:
+  application:
+    name: configClient
+
+  cloud:
+    config:
+      profile: dev
+      label: master
+      uri: http://localhost:8087/
+      discovery:
+        service-id: configServer
