@@ -1,4 +1,4 @@
-package com.cyb.sbdz.service;
+package com.cyb.sbdz.service.impl;
 
 
 public interface HelloDubboServic {

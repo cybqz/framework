@@ -10,13 +10,14 @@ spring:
 
 
 #Dubbo 服务提供者配置
-#dubbo:
-    #application:
-    #name: provider
-    #registry:
-    # zookeeper 注册中心地址
-    #address: zookeeper://192.168.124.17:2181
-    #timeout: 5000
-    #protocol:
-    #name: dubbo
-    #port: 20880
+dubbo:
+    application:
+      name: provider
+    registry:
+      address: 192.168.124.25
+      timeout: 5000
+      port: 2181
+      protocol: zookeeper
+    protocol:
+      name: dubbo
+      port: 20880

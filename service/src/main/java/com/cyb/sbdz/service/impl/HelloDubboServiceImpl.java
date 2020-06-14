@@ -1,10 +1,9 @@
-package com.cyb.sbdz.service;
+package com.cyb.sbdz.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import java.util.Date;
 
-@org.springframework.stereotype.Service("helloDubboService")
-@Service(version = "1.0.0")
+@Service(version = "1.0.0", group = "test")
 public class HelloDubboServiceImpl implements HelloDubboServic {
 
     @Override

@@ -1,14 +1,13 @@
 package com.cyb.sbdz.config;
 
 import com.alibaba.dubbo.config.*;
-import com.cyb.sbdz.service.HelloDubboServic;
+import com.cyb.sbdz.service.impl.HelloDubboServic;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Configuration
+//@Configuration
 public class MyDubboConfig {
 
     //<dubbo:application name="boot-user-service-provider"></dubbo:application>
@@ -43,6 +42,7 @@ public class MyDubboConfig {
      <dubbo:method name="getUserAddressList" timeout="1000"></dubbo:method>
      </dubbo:service>
      */
+    @Bean
     public ServiceConfig<HelloDubboServic> helloDubboServic(HelloDubboServic helloDubboServic){
         ServiceConfig<HelloDubboServic> serviceConfig = new ServiceConfig<>();
         serviceConfig.setInterface(HelloDubboServic.class);
